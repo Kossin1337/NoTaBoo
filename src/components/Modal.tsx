@@ -79,7 +79,14 @@ const Modal: React.FC<IModal> = ({
             <div className="relative flex-auto p-10">{body}</div>
             {/* FOOTER */}
             <div className="flex flex-col gap-2 p-10">
-              <Button label={actionLabel} disabled={disabled} secondary fullWidth onClick={handleSubmit} />
+              <Button
+                label={actionLabel}
+                disabled={disabled}
+                secondary
+                fullWidth
+                onClick={handleSubmit}
+              />
+              {footer}
             </div>
           </div>
         </div>

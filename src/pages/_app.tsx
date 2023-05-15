@@ -3,7 +3,8 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
 import Layout from "~/components/Layout";
-import Modal from "~/components/Modal";
+import LoginModal from "~/components/modals/LoginModal";
+import RegisterModal from "~/components/modals/RegisterModal";
 
 import { api } from "~/utils/api";
 
@@ -15,13 +16,8 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Modal
-        isOpen
-        title="Testing modal"
-        actionLabel="Submit"
-        onSubmit={() => console.log("submit")}
-        onClose={() => console.log("close")}
-      />
+      <LoginModal />
+      <RegisterModal />
       <Layout>
         <Component {...pageProps} />
       </Layout>
