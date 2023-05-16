@@ -16,15 +16,17 @@ const Header: React.FC<IHeader> = ({ label, showBackArrow }) => {
   }, [router]);
 
   return (
-    <div className="w-full border-b-[1px] border-l-neutral-800 p-5">
-      <div className="items-between flex  flex-row gap-2">
-        <h1 className="text-xl font-semibold text-text-color">{label}</h1>
+    <div className="border-b-[1px] border-l-neutral-800 p-5">
+      <div className="flex w-full flex-row justify-between gap-2">
+        <div>
+          <h1 className="text-xl font-semibold text-text-color">{label}</h1>
+        </div>
         {showBackArrow && (
           <div
             className="cursor-pointer transition hover:opacity-70"
             onClick={handleBack}
           >
-            <div className="flex-center h-[32px] w-[32px] cursor-pointer text-darker-color transition hover:text-primary-color">
+            <div className="flex-center h-[32px] w-[32px] cursor-pointer text-primary-color transition hover:text-darker-color">
               <BackArrow />
             </div>
           </div>

@@ -80,18 +80,19 @@ const Themes: React.FC = () => {
   }, [currentTheme]);
 
   return (
-    <div className="w-full rounded-xl bg-bg-color bg-neutral-800 p-4">
+    <div className="flex-center w-full flex-col rounded-xl bg-bg-color bg-neutral-800 p-4">
       <h2 className="text-center uppercase text-text-color">Select a Theme</h2>
-      <div className="mt-4 grid grid-cols-3 gap-3">
+      <div className="mt-4 grid max-w-fit grid-cols-3 gap-2">
         {themes.map((theme: Theme) => (
-          <button
-            key={theme.name}
-            style={{
-              backgroundColor: theme.primary,
-            }}
-            className={`box-border h-[48px] w-[48px] rounded-full px-6 py-3 hover:bg-[${theme.darker}]`}
-            onClick={() => updateTheme(theme.name)}
-          ></button>
+          <div className="flex-center" key={theme.name}>
+            <button
+              style={{
+                backgroundColor: theme.primary,
+              }}
+              className={`box-border h-[48px] w-[48px] rounded-xl px-6 py-3 hover:bg-[${theme.darker}]`}
+              onClick={() => updateTheme(theme.name)}
+            ></button>
+          </div>
         ))}
       </div>
     </div>

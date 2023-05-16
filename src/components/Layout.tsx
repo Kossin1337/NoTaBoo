@@ -17,7 +17,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
           <div className="col-span-3 border-x-[1px] border-neutral-800 lg:col-span-2">
             {children}
           </div>
-          <div className="col-span-1">
+          <div className="col-span-1 flex h-full flex-col justify-between gap-2 px-6 py-4">
             <FollowBar />
             <Themes />
           </div>
