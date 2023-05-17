@@ -19,7 +19,9 @@ const Header: React.FC<IHeader> = ({ label, showBackArrow }) => {
     <div className="border-b-[1px] border-l-neutral-800 p-5">
       <div className="flex w-full flex-row justify-between gap-2">
         <div>
-          <h1 className="text-xl font-semibold text-text-color">{label}</h1>
+          <h1 className="text-lg font-medium uppercase text-text-color">
+            {label}
+          </h1>
         </div>
         {showBackArrow && (
           <div

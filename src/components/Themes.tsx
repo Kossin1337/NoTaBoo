@@ -80,7 +80,7 @@ const Themes: React.FC = () => {
   }, [currentTheme]);
 
   return (
-    <div className="flex-center w-full flex-col rounded-xl bg-bg-color bg-neutral-800 p-4">
+    <div className="flex-center w-full flex-col rounded-xl bg-gradient-to-r from-bg-color to-darker-color p-4">
       <h2 className="text-center uppercase text-text-color">Select a Theme</h2>
       <div className="mt-4 grid max-w-fit grid-cols-3 gap-2">
         {themes.map((theme: Theme) => (

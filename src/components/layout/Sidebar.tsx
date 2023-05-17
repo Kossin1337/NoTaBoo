@@ -30,7 +30,7 @@ const sidebarItems = [
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="col-span-1 h-full w-min pr-4 md:pr-6">
+    <div className="col-span-1 flex h-full w-min flex-col items-center pr-4 md:pr-6">
       <SidebarLogo />
       <div className="mt-4 flex max-w-fit flex-col p-2">
         {sidebarItems.map((item, index) => {

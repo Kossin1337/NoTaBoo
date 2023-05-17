@@ -18,12 +18,12 @@ const SidebarItem: React.FC<ISidebarItem> = ({
       onClick={onClick}
       className="group flex max-w-min cursor-pointer flex-row items-center"
     >
-      <div className="flex-center relative h-14 w-14 rounded-full p-4 hover:bg-primary-color hover:bg-opacity-20 group-hover:text-darker-color lg:hidden">
+      <div className="flex-center relative h-14 w-14 rounded-full p-4 hover:bg-opacity-20 hover:bg-gradient-to-br hover:from-lighter-color hover:to-primary-color hover:text-darker-color group-hover:text-darker-color md:hidden">
         <div className="flex-center h-8 w-8">{icon}</div>
       </div>
-      <div className="lg:flex-center relative hidden gap-4 rounded-full p-4 hover:bg-primary-color hover:bg-opacity-20 group-hover:text-darker-color">
+      <div className="md:flex-center group-hover:text-darker-colo relative hidden gap-4 rounded-full p-4 hover:bg-opacity-20 hover:bg-gradient-to-bl hover:from-lighter-color hover:to-primary-color hover:text-darker-color">
         <div className="flex-center h-8 w-8">{icon}</div>
-        <p className="hidden text-sm uppercase text-text-color lg:block">
+        <p className="hidden text-sm uppercase text-text-color md:block">
           {label}
         </p>
       </div>

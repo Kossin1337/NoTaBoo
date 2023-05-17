@@ -3,7 +3,7 @@ import React from "react";
 const FollowBar = () => {
   return (
     <div className="hidden md:block">
-      <div className="rounded-xl bg-neutral-800 p-4">
+      <div className="rounded-xl bg-gradient-to-r from-bg-color to-darker-color p-4">
         <h2 className="font-orbitron text-center text-base font-semibold uppercase text-primary-color">
           Who to Follow?
         </h2>
