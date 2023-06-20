@@ -50,4 +50,9 @@ export default NextAuth({
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
   secret: process.env.NEXTAUTH_SECRET,
+  // callbacks: {
+  //   session({ session, token, user }) {
+  //     return session // The return type will match the one returned in `useSession()`
+  //   },
+  // }
 });

@@ -1,10 +1,13 @@
 import React from "react";
+import useCurrentUser from "hooks/useCurrentUser";
+import { signOut } from "next-auth/react";
 
+/* COMPONENTS */
 import SidebarLogo from "./SidebarLogo";
 import SidebarItem from "./SidebarItem";
 import SidebarTweetItem from "./SidebarTweetItem";
 
-/* icons */
+/* ICONS */
 import { HomeIcon } from "./icons/HomeIcon";
 import { ProfileIcon } from "./icons/ProfileIcon";
 import { NotificationIcon } from "./icons/NotificationIcon";
@@ -20,15 +23,21 @@ const sidebarItems = [
     label: "Notifications",
     href: "/notifications",
     icon: <NotificationIcon />,
+    auth: true,
   },
   {
     label: "Profile",
     href: "/users/1337",
     icon: <ProfileIcon />,
+    auth: true,
   },
 ];
 
 const Sidebar: React.FC = () => {
+  const { data: currentUser } = useCurrentUser();
+
+  console.log("SIDEBAR, currentUser: ", currentUser);
+
   return (
     <div className="col-span-1 flex h-full w-min flex-col items-center pr-4 md:pr-6">
       <SidebarLogo />
@@ -40,16 +49,28 @@ const Sidebar: React.FC = () => {
               href={item.href}
               icon={item.icon}
               key={index}
+              auth={item.auth}
             />
           );
         })}
-        <SidebarItem
-          onClick={() => {
-            console.log("logout");
-          }}
-          label="Logout"
-          icon={<LogoutIcon />}
-        />
+        {currentUser && (
+          <SidebarItem
+            onClick={() => void signOut()}
+            label="Logout"
+            icon={<LogoutIcon />}
+          />
+        )}
+        {currentUser && (
+          <div>
+            <h2 className="uppercase">
+              {/* {currentUser.map((value, index) => {
+                return (
+                  <span key={`user-value-${index}`}>{value}</span>
+                )
+              })} */}
+            </h2>
+          </div>
+        )}
         <SidebarTweetItem />
       </div>
     </div>
@@ -57,3 +78,6 @@ const Sidebar: React.FC = () => {
 };
 
 export default Sidebar;
+// (async () => {
+//   await signOut();
+// });

@@ -10,11 +10,13 @@ export default async function handler(
   }
 
   try {
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth(req, res);
 
     return res.status(200).json(currentUser);
   } catch (error) {
-    console.error(error);
+    console.log(`Current.js error: `, error);
+
+    /* THIS ONE IS PLAYING ON REPEAT - this is the error */
     return res.status(400).end();
   }
 }

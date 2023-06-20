@@ -1,9 +1,13 @@
 import React, { useCallback, useState } from "react";
+import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
 
+/* COMPONENTS */
 import Modal from "../Modal";
 import Input from "../layout/Input";
-import Button from "../Button";
+// import Button from "../Button";
 
+/* HOOKS */
 import useLoginModal from "hooks/useLoginModal";
 import useRegisterModal from "hooks/useRegisterModal";
 
@@ -14,6 +18,7 @@ const LoginModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onToggle = useCallback(() => {
     if (isLoading) {
@@ -24,18 +29,26 @@ const LoginModal = () => {
     registerModal.onOpen();
   }, [isLoading, loginModal, registerModal]);
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
 
       /* ADD LOGIN */
+      await signIn("credentials", {
+        email,
+        password,
+      });
+
+      toast.success("Logged In");
+
       loginModal.onClose();
     } catch (error) {
-      console.log(error);
+      toast.error("ERROR WHILE LOGGIN IN");
+      console.error(`LOGIN-MODAL ERROR: `, error);
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [loginModal, email, password]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -47,6 +60,7 @@ const LoginModal = () => {
       />
       <Input
         placeholder="Password"
+        type={showPassword ? "text" : "password"}
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={isLoading}
@@ -76,7 +90,9 @@ const LoginModal = () => {
       disabled={isLoading}
       isOpen={loginModal.isOpen}
       onClose={loginModal.onClose}
-      onSubmit={onSubmit}
+      onSubmit={() => {
+        void onSubmit();
+      }}
       body={bodyContent}
       footer={footerContent}
     />
